@@ -1,0 +1,83 @@
+A) BINARY SEARCH
+
+  Binary search adalah algoritma pencarian yang digunakan untuk mencari sebuah elemen tertentu di dalam sebuah array atau daftar yang terurut. Algoritma ini bekerja dengan cara membandingkan elemen yang dicari dengan elemen tengah dari array tersebut. Jika elemen tersebut sama dengan elemen tengah, maka pencarian selesai. Jika tidak, pencarian akan dilanjutkan hanya pada setengah bagian dari array yang mungkin mengandung elemen tersebut, berdasarkan nilai relatif dari elemen yang dicari terhadap elemen tengah.
+
+  Binary search hanya dapat digunakan pada array atau daftar yang terurut secara teratur, baik itu terurut secara naik maupun menurun. Binary search memiliki kompleksitas waktu O(log n), di mana n adalah jumlah elemen dalam array. Ini membuatnya menjadi salah satu algoritma pencarian yang paling efisien untuk digunakan pada array yang besar. Binary search ini bisa disebut sebagai "problem search". Binary search akan mengembalikan nilai yang ingin kita cari. Namun jika nilai yang dicari tidak ada maka binary search akan mengembalikan nilai "null", atau -1 (artinya tidak ada).
+
+  Contoh penggunaan binary search hampir mirip dengan penggunaan kamus dalam kehidupan sehari-hari. Misalkan, kita sedang mencari kata "key". Kita akan membuka halaman dengan kata kunci alfabet 'k'. Setelah itu, kita akan beralih ke halaman yang mengandung kata-kata "ke-", karena huruf kedua "key" adalah'e'. Begitu seterusnya hingga kata "key" ditemukan.
+
+  Cara penggunaan Binary Search: 
+
+def binary_search(arr, cari):
+    low= 0
+    high= len(arr)-1
+    mid= 0
+
+    while low <= high:
+        mid= int((high+low)/2)
+        if arr[mid] < cari:
+            low= mid+1
+        elif arr[mid] > cari:
+            high= mid-1
+        else:
+            return mid
+    return -1
+
+arr= [1,2,3,4,5,6,7]
+cari= int(input("Masukkan angka yang ingin dicari:"))
+
+result= binary_search(arr, cari)
+
+if result != -1:
+    print("Angka ditemukan di index:", result)
+else:
+    print("Angka tidak ditemukan")
+
+  Catatan:
+    Misalkan kita mempunyai list yang berisikan angka 1 sampai 100, dan ingin mencari angka 75. Binary Search akan melakukan langkah pertama, yaitu membagi 2 data tersebut menjadi 50 angka pertama dan 50 angka kedua. Lalu, Binary akan mengecek apakah nilai 80 lebih besar/lebih kecil dari angka 50 (karena angka 50 menjadi median/nilai tengah). Jika iya, maka 50 angka pertama tidak akan dicek untuk mencari angka 80.     Selanjutnya, 50 angka kedua akan dibagi menjadi 2 bagian, yaitu 51-75 dan 76-100. Lalu, Binary akan mengecek apakah 80 lebih dari 75 (menjadi median/nilai tengah). Jika iya, maka 51-75 tidak akan dicek. Kemudian, 76-100 akan dibagi menjadi 2, yaitu 76-88 dan 89-100. Jika nilai 80 kurang dari 88 (sebagai nilai tengah), maka dia akan mengecek bagian 76-88. Begitu seterusnya hingga nilai 80 ditemukan. Ingat, syarat dari Binary Search ialah data/angka harus terurut.
+
+B) LINEAR SEARCH (SIMPLER SEARCH)
+
+  Linear search adalah algoritma pencarian sederhana yang bekerja dengan cara memeriksa setiap elemen dalam daftar secara berurutan hingga elemen yang dicari ditemukan atau daftar selesai dijelajahi. Algoritma ini tidak memerlukan syarat khusus terkait pengurutan data. Namun, kompleksitas waktu dari linear search adalah O(n), di mana n adalah jumlah elemen dalam daftar. Ini berarti bahwa waktu yang dibutuhkan untuk menemukan elemen yang dicari bisa meningkat secara linear seiring dengan peningkatan jumlah elemen dalam daftar.
+
+  Meskipun linear search sederhana, namun tidak efisien untuk digunakan pada daftar yang besar karena kinerjanya yang lambat. Oleh karena itu, pada daftar yang besar, algoritma pencarian seperti binary search yang memiliki kompleksitas waktu yang lebih rendah seringkali lebih digunakan.
+
+  Contoh penggunaan: 
+
+angka= [1,2,3,4,5,6,7,8,9,10]
+
+cari= int(input())
+ketemu= -1
+for i in angka:
+    if (i==cari):
+        ketemu=1
+
+if (ketemu==1):
+    print("ketemu")
+else:
+    print("gak ketemu")
+
+  Catatan:
+    Misal kita mempunyai list angka yang sederhana dan terurut, yaitu [1,2,3,4,5,6,7,8,9,10]. Jika Binary Search memulai langkahnya dari tengah-tengah data atau list, maka Linear Search akan memulai langkah dari awal list atau data. Linear Search mulai mencari angka yang ingin dicari dari awal list. Dia akan mengecek satu per satu nilai yang ada di dalam list atau data. 
+
+C) RUNNING TIME
+
+  Running time dalam algoritma searching mengacu pada waktu yang diperlukan oleh algoritma tersebut untuk menemukan elemen yang dicari dalam struktur data tertentu, seperti array, daftar, atau pohon. Running time biasanya diukur dalam jumlah langkah atau waktu yang dibutuhkan untuk menyelesaikan pencarian dalam algoritma tersebut. Dalam analisis running time, ada beberapa faktor yang mempengaruhi kinerja algoritma searching, termasuk ukuran data input, cara data diatur, dan kompleksitas algoritma itu sendiri. Tujuan dari analisis running time adalah untuk memahami seberapa efisien algoritma tersebut dalam menyelesaikan pencarian dan bagaimana kinerja algoritma tersebut akan berubah seiring dengan pertambahan ukuran data input.
+
+  Sebagai contoh Linear Search dan Binary Search. Linear Search mempunyai running time atau kompleksitas yang berbanding lurus dengan banykanya jumlah data atau nilai. Jadi semakin banyak jumlah data atau nilai, semakin banyak langkah yang akan ditempuh oleh algoritma Linear Search. Berbeda dengan Binary Search, algoritma ini mempunyai running time atau kompleksitas yang cukup logaritmik terhadap ukuran data input, sehingga membuatnya lebih cepat daripada Linear Search.
+
+D) BIG O NOTATION
+
+  Big O notation adalah cara untuk menyatakan kinerja atau kompleksitas waktu dari sebuah algoritma. Dalam konteks algoritma pencarian, Big O notation digunakan untuk menggambarkan berapa banyak operasi yang diperlukan oleh algoritma untuk mencari elemen tertentu dalam kumpulan data, yang dapat berupa larik, daftar, atau struktur data lainnya. Dalam algoritma pencarian, beberapa jenis algoritma memiliki kompleksitas yang berbeda. Sebagai contoh, algoritma pencarian linear memiliki kompleksitas waktu O(n), yang berarti waktu eksekusi algoritma secara linier meningkat seiring dengan jumlah elemen dalam kumpulan data. Di sisi lain, algoritma pencarian biner memiliki kompleksitas waktu O(log n), yang berarti waktu eksekusi algoritma meningkat secara logaritmik seiring dengan jumlah elemen dalam kumpulan data. Dengan menggunakan Big O notation, kita dapat membandingkan efisiensi relatif dari algoritma pencarian berbeda dan memilih yang paling sesuai dengan kebutuhan spesifik aplikasi atau masalah yang dihadapi.
+  
+
+
+
+
+
+
+  
+
+
+
+
